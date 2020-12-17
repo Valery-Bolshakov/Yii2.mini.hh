@@ -1,16 +1,20 @@
 <!-- Создали главный вид index -->
 <!-- Перенесли контентную часть из шаблона views->layout->mini_hh -->
-<!--  -->
 
 <!-- Закоментировал некоторые элементы, которые не отображаются.
 При изменении порядка подключения скриптов и стилей - становятся видимыми. -->
 <?php
 
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
+
 $this->title = 'Список резюме';
 // устанавливаем мета-теги для данного вида, второй параметр (description) нужен для проверки уникальности
 $this->registerMetaTag(['name' => 'description', 'content' => 'мета-описание...'], 'description');
 
-
+// смотрим что передает $model
+//debug($model);
 ?>
 
 <div class="header-search">
@@ -26,9 +30,10 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета-опис
     </div>
 </div>
 
+
 <div class="content">
     <div class="container">
-        <h1 class="main-title mt24 mb16">PHP разработчики в Кемерово</h1>
+        <h1 class="main-title mt24 mb16">PHP разработчики:</h1>
         <!--<button class="vacancy-filter-btn">Фильтр</button>-->
         <div class="row">
             <div class="col-lg-9 desctop-992-pr-16">
@@ -62,7 +67,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета-опис
                     <div class="company-list-search__block-left">
                         <div class="resume-list__block-img mb8">
                             <a href="<?= \yii\helpers\Url::to(['home/resume-view']) ?>"><img
-                                        src="images/profile-foto.jpg" alt="profile"></a>
+                                        src="images/user.jpg" alt="profile"></a>
                         </div>
                     </div>
                     <div class="company-list-search__block-right">
@@ -73,33 +78,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета-опис
                             <span class="mr16 paragraph">120 000 ₽</span>
                             <span class="mr16 paragraph">Опыт работы 3 года</span>
                             <span class="mr16 paragraph">43 года</span>
-                            <span class="mr16 paragraph">Кемерово</span>
-                        </div>
-                        <p class="paragraph tbold mobile-off">Последнее место работы</p>
-                    </div>
-                    <div class="company-list-search__block-middle">
-                        <h3 class="mini-title desktop-off">PHP разработчик</h3>
-                        <p class="paragraph mb16 mobile-mb32">Младший PHP разработчик в ООО «ТЕПЛОВОЕ
-                            ОБОРУДОВАНИЕ»,
-                            Октябрь 2010 — по настоящее время </p>
-                    </div>
-                </div>
-
-                <div class="vakancy-page-block company-list-search__block resume-list__block p-rel mb16">
-                    <div class="company-list-search__block-left">
-                        <div class="resume-list__block-img mb8">
-                            <a href="<?= \yii\helpers\Url::to(['home/resume-view']) ?>"><img
-                                        src="images/profile-foto.jpg" alt="profile"></a>
-                        </div>
-                    </div>
-                    <div class="company-list-search__block-right">
-                        <div class="mini-paragraph cadet-blue mobile-mb12">Обновлено 1 апреля 2020 в 15:00</div>
-                        <h3 class="mini-title mobile-off">PHP разработчик</h3>
-                        <div class="d-flex align-items-center flex-wrap mb8 ">
-                            <span class="mr16 paragraph">120 000 ₽</span>
-                            <span class="mr16 paragraph">Опыт работы 3 года</span>
-                            <span class="mr16 paragraph">43 года</span>
-                            <span class="mr16 paragraph">Кемерово</span>
+                            <span class="mr16 paragraph">Омск</span>
                         </div>
                         <p class="paragraph tbold mobile-off">Последнее место работы</p>
                     </div>
@@ -115,7 +94,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета-опис
                     <div class="company-list-search__block-left">
                         <div class="resume-list__block-img mb8">
                             <a href="<?= \yii\helpers\Url::to(['home/resume-view']) ?>"><img
-                                        src="images/profile-foto.jpg" alt="profile"></a>
+                                        src="images/user.jpg" alt="profile"></a>
                         </div>
                     </div>
                     <div class="company-list-search__block-right">
@@ -125,7 +104,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета-опис
                             <span class="mr16 paragraph">120 000 ₽</span>
                             <span class="mr16 paragraph">Опыт работы 3 года</span>
                             <span class="mr16 paragraph">43 года</span>
-                            <span class="mr16 paragraph">Кемерово</span>
+                            <span class="mr16 paragraph">Санкт-Петербург</span>
                         </div>
                         <p class="paragraph tbold mobile-off">Последнее место работы</p>
                     </div>
@@ -140,7 +119,33 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета-опис
                 <div class="vakancy-page-block company-list-search__block resume-list__block p-rel mb16">
                     <div class="company-list-search__block-left">
                         <div class="resume-list__block-img mb8">
-                            <a href="#"><img src="images/profile-foto.jpg" alt="profile"></a>
+                            <a href="<?= \yii\helpers\Url::to(['home/resume-view']) ?>"><img
+                                        src="images/user.jpg" alt="profile"></a>
+                        </div>
+                    </div>
+                    <div class="company-list-search__block-right">
+                        <div class="mini-paragraph cadet-blue mobile-mb12">Обновлено 1 апреля 2020 в 15:00</div>
+                        <h3 class="mini-title mobile-off">PHP разработчик</h3>
+                        <div class="d-flex align-items-center flex-wrap mb8 ">
+                            <span class="mr16 paragraph">120 000 ₽</span>
+                            <span class="mr16 paragraph">Опыт работы 3 года</span>
+                            <span class="mr16 paragraph">43 года</span>
+                            <span class="mr16 paragraph">Москва</span>
+                        </div>
+                        <p class="paragraph tbold mobile-off">Последнее место работы</p>
+                    </div>
+                    <div class="company-list-search__block-middle">
+                        <h3 class="mini-title desktop-off">PHP разработчик</h3>
+                        <p class="paragraph mb16 mobile-mb32">Младший PHP разработчик в ООО «ТЕПЛОВОЕ
+                            ОБОРУДОВАНИЕ»,
+                            Октябрь 2010 — по настоящее время </p>
+                    </div>
+                </div>
+                <!--
+                <div class="vakancy-page-block company-list-search__block resume-list__block p-rel mb16">
+                    <div class="company-list-search__block-left">
+                        <div class="resume-list__block-img mb8">
+                            <a href="#"><img src="images/user.jpg" alt="profile"></a>
                         </div>
                     </div>
                     <div class="company-list-search__block-right">
@@ -164,7 +169,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета-опис
                 <div class="vakancy-page-block company-list-search__block resume-list__block p-rel mb16">
                     <div class="company-list-search__block-left">
                         <div class="resume-list__block-img mb8">
-                            <a href="#"><img src="images/profile-foto.jpg" alt="profile"></a>
+                            <a href="#"><img src="images/user.jpg" alt="profile"></a>
                         </div>
                     </div>
                     <div class="company-list-search__block-right">
@@ -188,7 +193,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета-опис
                 <div class="vakancy-page-block company-list-search__block resume-list__block p-rel mb16">
                     <div class="company-list-search__block-left">
                         <div class="resume-list__block-img mb8">
-                            <a href="#"><img src="images/profile-foto.jpg" alt="profile"></a>
+                            <a href="#"><img src="images/user.jpg" alt="profile"></a>
                         </div>
                     </div>
                     <div class="company-list-search__block-right">
@@ -209,6 +214,9 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета-опис
                             Октябрь 2010 — по настоящее время </p>
                     </div>
                 </div>
+                -->
+
+                <!-- Пагинация-->
                 <ul class="dor-pagination mb128">
                     <li class="page-link-prev"><a href="#"><img class="mr8"
                                                                 src="images/mini-left-arrow.svg" alt="arrow"> Назад</a>
@@ -224,12 +232,15 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета-опис
                     </li>
                 </ul>
             </div>
+
+            <!-- ФИЛЬТР -->
             <div class="col-lg-3 desctop-992-pl-16 d-flex flex-column vakancy-page-filter-block vakancy-page-filter-block-dnone">
-                <div
-                        class="vakancy-page-filter-block__row mobile-flex-992 mb24 d-flex justify-content-between align-items-center">
-                    <!--<div class="heading">Фильтр</div>
-                    <img class="cursor-p" src="images/big-cancel.svg" alt="cancel">-->
-                </div>
+                <!--<div
+                        class="vakancy-page-filter-block__row mobile-flex-992 mb24 d-flex
+                        justify-content-between align-items-center">
+                    <div class="heading">Фильтр</div>
+                    <img class="cursor-p" src="images/big-cancel.svg" alt="cancel">
+                </div>-->
                 <div class="signin-modal__switch-btns-wrap resume-list__switch-btns-wrap mb16">
                     <a href="#" class="signin-modal__switch-btn active">Все</a>
                     <a href="#" class="signin-modal__switch-btn ">Мужчины</a>
@@ -239,11 +250,9 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета-опис
                     <div class="paragraph cadet-blue">Город</div>
                     <div class="citizenship-select">
                         <select class="nselect-1">
-                            <option value="01">Кемерово</option>
-                            <option value="02">Новосибирск</option>
-                            <option value="03">Иркутск</option>
-                            <option value="04">Красноярск</option>
-                            <option value="05">Барнаул</option>
+                            <option value="01">Омск</option>
+                            <option value="03">Санкт-Петербург</option>
+                            <option value="04">Москва</option>
                         </select>
                     </div>
                 </div>
@@ -362,7 +371,8 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета-опис
                     </div>
                 </div>
                 <!--<div
-                        class="vakancy-page-filter-block__row vakancy-page-filter-block__show-vakancy-btns mb24 d-flex flex-wrap align-items-center mobile-jus-cont-center">
+                        class="vakancy-page-filter-block__row vakancy-page-filter-block__show-vakancy-btns
+                         mb24 d-flex flex-wrap align-items-center mobile-jus-cont-center">
                     <a class="link-orange-btn orange-btn mr24 mobile-mb12" href="#">Показать <span>1 230</span>
                         вакансии</a>
                     <a href="#">Сбросить все</a>

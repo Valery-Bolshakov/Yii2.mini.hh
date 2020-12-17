@@ -29,8 +29,9 @@ class AppAsset extends AssetBundle
     // подключаем готовые файлы js
     public $js = [
         '//kit.fontawesome.com/a4e584b747.js',
-        '//code.jquery.com/jquery-3.2.1.slim.min.js',
-        '//code.jquery.com/jquery-3.5.1.min.js',
+        // не понял почему но эти 2 файла вызывали ошибку при работе с формами
+        //'//code.jquery.com/jquery-3.2.1.slim.min.js',
+        //'//code.jquery.com/jquery-3.5.1.min.js',
         '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',
         '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js',
         'js/main.js',
@@ -42,5 +43,6 @@ class AppAsset extends AssetBundle
 
     public $depends = [
         'yii\web\YiiAsset',
+        //'yii\bootstrap\BootstrapAsset',
     ];
 }

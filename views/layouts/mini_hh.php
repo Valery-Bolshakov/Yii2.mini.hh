@@ -50,6 +50,21 @@ AppAsset::register($this);
                     <li class="nav-item">
                         <a class="nav-link" href="<?= \yii\helpers\Url::to(['home/my-resume']) ?>">Мои резюме</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= \yii\helpers\Url::to(['home/form']) ?>">form</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= \yii\helpers\Url::to(['home/view']) ?>">view</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= \yii\helpers\Url::to(['home/create']) ?>">create</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= \yii\helpers\Url::to(['home/update']) ?>">update</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= \yii\helpers\Url::to(['home/delete']) ?>">delete</a>
+                    </li>
                 </ul>
                 <div class="navigation-menu__mobile">
                     <ul class="navigation-menu__mobile-nav">

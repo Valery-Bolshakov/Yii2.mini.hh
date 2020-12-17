@@ -1,12 +1,21 @@
-<!-- СТРАНИЦА СОЗДАНИЯ НОВОГО РЕЗЮМЕ -->
-
-<!--<title>Создание нового резюме</title>
--->
-
 <?php
+
+use yii\widgets\ActiveForm;
+
 $this->title = 'Создание нового резюме';
 
 ?>
+
+<div class="col-md-3">
+    <?php $form = ActiveForm::begin(); ?>
+    <!-- вызываем в форме метод field с первым параметром $model и далее параметрами свойства
+    модели которые должны там быть -->
+    <?= $form->field($model, 'name')/*->passwordInput()*/ ?>
+    <?= $form->field($model, 'email') ?>
+
+    <?php ActiveForm::end(); ?>
+
+</div>
 <div class="content p-rel">
     <div class="container">
         <div class="row">
@@ -21,7 +30,9 @@ $this->title = 'Создание нового резюме';
                 <div class="main-title mb24">Новое резюме</div>
             </div>
         </div>
+        <!-- КОНТЕЙНЕР ФОРМЫ -->
         <div class="col-12">
+            <!-- НАЧАЛО ФОРМЫ -->
             <form action="#">
                 <div class="row mb32">
                     <div class="col-lg-2 col-md-3 dflex-acenter">
@@ -36,6 +47,7 @@ $this->title = 'Создание нового резюме';
                         </label>
                     </div>
                 </div>
+
                 <div class="row mb16">
                     <div class="col-lg-2 col-md-3 dflex-acenter">
                         <div class="paragraph">Фамилия</div>
@@ -44,6 +56,7 @@ $this->title = 'Создание нового резюме';
                         <input type="text" class="dor-input w100">
                     </div>
                 </div>
+
                 <div class="row mb16">
                     <div class="col-lg-2 col-md-3 dflex-acenter">
                         <div class="paragraph">Имя</div>
@@ -52,6 +65,7 @@ $this->title = 'Создание нового резюме';
                         <input type="text" class="dor-input w100">
                     </div>
                 </div>
+
                 <div class="row mb16">
                     <div class="col-lg-2 col-md-3 dflex-acenter">
                         <div class="paragraph">Отчество</div>
@@ -60,6 +74,7 @@ $this->title = 'Создание нового резюме';
                         <input type="text" class="dor-input w100">
                     </div>
                 </div>
+
                 <div class="row mb24">
                     <div class="col-lg-2 col-md-3 dflex-acenter">
                         <div class="paragraph">Дата рождения</div>
