@@ -13,6 +13,7 @@
                 <td><?= $country['code'] ?></td>
                 <td><?= $country['name'] ?></td>
                 <td><?= $country['population'] ?></td>
+                <td><?= $country['status'] ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
