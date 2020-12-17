@@ -39,7 +39,7 @@ $this->title = 'Создание нового резюме';
                         <div class="paragraph">Фото</div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-11">
-                        <div class="profile-foto-upload mb8"><img src="/images/profile-foto.jpg" alt="foto">
+                        <div class="profile-foto-upload mb8"><img src="/images/user.jpg" alt="foto">
                         </div>
                         <label class="custom-file-upload">
                             <input type="file"/>
